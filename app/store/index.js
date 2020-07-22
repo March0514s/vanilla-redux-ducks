@@ -1,4 +1,6 @@
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import { statusReducer } from './ducks/status';
+import thunk from 'redux-thunk';
 
-export const store = createStore(statusReducer);
+const middlewares = applyMiddleware(thunk);
+export const store = createStore(statusReducer, middlewares);

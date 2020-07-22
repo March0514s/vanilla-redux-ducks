@@ -19,7 +19,15 @@ export const statusReducer = (state = initialState, action) => {
 };
 
 // Action Creators
-export const changeStatus = (userName) => ({
-  type: Types.CHANGE_STATUS,
-  payload: `${userName} is typing`,
-});
+export const changeStatus = (text) => {
+  return (dispatch) => {
+    setTimeout(
+      () =>
+        dispatch({
+          type: Types.CHANGE_STATUS,
+          payload: `${text} is typing...`,
+        }),
+      1000
+    );
+  };
+};
